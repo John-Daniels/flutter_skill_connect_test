@@ -1,6 +1,19 @@
-# flutter_skill_connect_test
+# flutter_skill_connect_test [![Codemagic build status](https://api.codemagic.io/apps/645d451e040e13239bb90ea7/645d451e040e13239bb90ea6/status_badge.svg)](https://codemagic.io/apps/645d451e040e13239bb90ea7/645d451e040e13239bb90ea6/latest_build)
 
-A new Flutter project.
+## Test Looks out for
+
+- Design Processes.
+- Design Implementation
+- Clean Code
+- Reusable Widgets
+
+# Screenshots
+
+<div>
+<img src="./screenshots/shot1.png" />
+<img src="./screenshots/shot2.png" />
+<img src="./screenshots/shot3.png" />
+</div>
 
 ## Getting Started
 
