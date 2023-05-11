@@ -9,4 +9,6 @@ class AppColors {
   static Color primaryTextColor = Colors.black;
   static Color primaryTextColorLight = Colors.black.withOpacity(0.5);
   static Color onlineBadgeColor = const Color(0xFF008215);
+
+  static Color badgeColorGrad1 = const Color(0xff05122b4d);
 }
