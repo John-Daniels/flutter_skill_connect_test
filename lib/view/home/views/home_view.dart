@@ -1,12 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_skill_connect_test/constants/assets_constant.dart';
 import 'package:flutter_skill_connect_test/theme/app_colors.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:badges/badges.dart' as AppBadges;
 
-import '../../../theme/styles/text_styles.dart';
 import '../widgets/profile_header.dart';
 
 class HomeView extends StatelessWidget {
@@ -18,6 +15,7 @@ class HomeView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        centerTitle: true,
         leading: IconButton(
           icon: SvgPicture.asset(Assets.arrowLeft),
           onPressed: () {},
@@ -35,7 +33,10 @@ class HomeView extends StatelessWidget {
         width: double.infinity,
         child: ListView(
           padding: EdgeInsets.symmetric(horizontal: 22.w),
-          children: [SizedBox(height: 24.h), const ProfileHeader()],
+          children: [
+            SizedBox(height: 24.h),
+            const ProfileHeader(),
+          ],
         ),
       ),
     );
