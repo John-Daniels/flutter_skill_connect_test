@@ -10,9 +10,9 @@
 # Screenshots
 
 <div>
-<img src="./screenshots/shot1.png" />
-<img src="./screenshots/shot2.png" />
-<img src="./screenshots/shot3.png" />
+<img src="./screenshots/shot1.png" width='280px' />
+<img src="./screenshots/shot2.png" width='280px' />
+<img src="./screenshots/shot3.png" width='280px' />
 </div>
 
 ## Getting Started
