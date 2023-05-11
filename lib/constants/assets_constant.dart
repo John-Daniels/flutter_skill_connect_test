@@ -6,6 +6,7 @@ class Assets {
   static const String messageIcon = 'assets/icons/message.svg';
   static const String onlineBadgeIcon = 'assets/icons/online_badge.svg';
   static const String ratingStarIcon = 'assets/icons/rating_star.svg';
+  static const String callIcon = 'assets/icons/call.svg';
 
   // images
   static const String profilePic = 'assets/images/profilepic.png';

@@ -70,21 +70,41 @@ class ProfileHeader extends StatelessWidget {
           // information and links
 
           SizedBox(
-            height: 100,
-            child: GridView.builder(
-              itemCount: 4,
+            height: 120,
+            child: GridView(
               padding: EdgeInsets.zero,
               gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                 crossAxisCount: 2,
                 mainAxisSpacing: 0,
                 mainAxisExtent: 30,
               ),
-              itemBuilder: (context, index) {
-                return const HeaderInformation(
+              children: [
+                const HeaderInformation(
                   icon: Assets.locationIcon,
                   title: 'Lagos, Nigeria',
-                );
-              },
+                ),
+                const HeaderInformation(
+                  icon: Assets.callIcon,
+                  title: '+234 813 970 3721',
+                ),
+                const HeaderInformation(
+                  icon: Assets.messageIcon,
+                  title: 'samdee@gmail.com',
+                ),
+
+                Container(
+                  child: Row(
+                    children: const [
+                      Text('Experience'),
+                      LevelBadge(),
+                    ],
+                  ),
+                )
+                // HeaderInformation(
+                //   icon: Assets.locationIcon,
+                //   title: 'samdee@gmail.com',
+                // ),
+              ],
             ),
           ),
 
@@ -128,6 +148,18 @@ class HeaderInformation extends StatelessWidget {
           ),
         ),
       ],
+    );
+  }
+}
+
+class LevelBadge extends StatelessWidget {
+  final String? title;
+  const LevelBadge({super.key, this.title});
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      child: const Text('level'),
     );
   }
 }
