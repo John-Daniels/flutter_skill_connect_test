@@ -6,6 +6,9 @@ import 'package:flutter_svg/svg.dart';
 import '../../../constants/assets_constant.dart';
 import '../../../theme/app_colors.dart';
 import '../../../theme/styles/text_styles.dart';
+import '../../../widgets/app_elevated_button.dart';
+import 'level_badge.dart';
+import 'profile_header_information.dart';
 
 class ProfileHeader extends StatelessWidget {
   const ProfileHeader({
@@ -29,8 +32,8 @@ class ProfileHeader extends StatelessWidget {
             ),
             child: Container(
               decoration: const BoxDecoration(shape: BoxShape.circle),
-              width: 107.w,
-              height: 107.h,
+              width: 107,
+              height: 107,
               child: Image.asset(Assets.profilePic),
             ),
           ),
@@ -41,25 +44,20 @@ class ProfileHeader extends StatelessWidget {
           ),
           Text(
             'Fashion Designer, Male',
-            style: getLightTS,
+            style: getRegularTS.copyWith(
+              color: AppColors.primaryTextColorLight,
+            ),
           ),
           SizedBox(height: 1.h),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             mainAxisSize: MainAxisSize.min,
             children: [
-              RatingBar.builder(
-                initialRating: 5,
-                minRating: 1,
-                itemCount: 5,
-                direction: Axis.horizontal,
-                itemPadding: const EdgeInsets.symmetric(horizontal: 2),
-                itemBuilder: (context, _) =>
-                    SvgPicture.asset(Assets.ratingStarIcon),
-                itemSize: 16,
+              const AppRatingBar(
                 ignoreGestures: true,
-                onRatingUpdate: (rating) {},
+                initialRating: 5,
               ),
+              SizedBox(width: 3.w),
               const Text(
                 '5.0',
                 style: TextStyle(fontWeight: FontWeight.bold),
@@ -68,9 +66,9 @@ class ProfileHeader extends StatelessWidget {
           ),
 
           // information and links
-
+          SizedBox(height: 20.h),
           SizedBox(
-            height: 120,
+            height: 70,
             child: GridView(
               padding: EdgeInsets.zero,
               gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
@@ -91,75 +89,73 @@ class ProfileHeader extends StatelessWidget {
                   icon: Assets.messageIcon,
                   title: 'samdee@gmail.com',
                 ),
-
-                Container(
-                  child: Row(
-                    children: const [
-                      Text('Experience'),
-                      LevelBadge(),
-                    ],
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(
+                      'Experience',
+                      style: getRegularTS.copyWith(
+                        color: AppColors.primaryTextColorLight,
+                        overflow: TextOverflow.ellipsis,
+                      ),
+                    ),
+                    SizedBox(width: 4.w),
+                    const LevelBadge(),
+                  ],
+                ),
+              ],
+            ),
+          ),
+          AppElevatedButton(
+            onPressed: () {},
+            child: Row(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                SvgPicture.asset(Assets.appleIcon),
+                SizedBox(width: 4.w),
+                const Text(
+                  'Send Message',
+                  style: TextStyle(
+                    fontSize: 15,
+                    fontWeight: FontWeight.w500,
                   ),
-                )
-                // HeaderInformation(
-                //   icon: Assets.locationIcon,
-                //   title: 'samdee@gmail.com',
-                // ),
+                ),
               ],
             ),
           ),
 
-          // Column(
-          //   children: const [
-          //     HeaderInformation(
-          //       icon: Assets.locationIcon,
-          //       title: 'Lagos, Nigeria',
-          //     ),
-          //     HeaderInformation(
-          //       icon: Assets.locationIcon,
-          //       title: 'Lagos, Nigeria',
-          //     ),
-          //   ],
-          // )
+          SizedBox(height: 15.h),
+          const Divider(),
         ],
       ),
     );
   }
 }
 
-class HeaderInformation extends StatelessWidget {
-  final String title;
-  final String icon;
-  const HeaderInformation({
+class AppRatingBar extends StatelessWidget {
+  final double initialRating;
+  final bool ignoreGestures;
+  final ValueChanged<double>? onRatingUpdate;
+
+  const AppRatingBar({
     super.key,
-    required this.title,
-    required this.icon,
+    required this.initialRating,
+    this.ignoreGestures = false,
+    this.onRatingUpdate,
   });
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      children: [
-        SvgPicture.asset(Assets.locationIcon),
-        SizedBox(width: 4.w),
-        Text(
-          title,
-          style: getRegularTS.copyWith(
-            color: AppColors.primaryTextColorLight,
-          ),
-        ),
-      ],
-    );
-  }
-}
-
-class LevelBadge extends StatelessWidget {
-  final String? title;
-  const LevelBadge({super.key, this.title});
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      child: const Text('level'),
+    return RatingBar.builder(
+      initialRating: 5,
+      minRating: 1,
+      itemCount: 5,
+      direction: Axis.horizontal,
+      itemPadding: const EdgeInsets.symmetric(horizontal: 2),
+      itemBuilder: (context, _) => SvgPicture.asset(Assets.ratingStarIcon),
+      itemSize: 16,
+      ignoreGestures: true,
+      onRatingUpdate: onRatingUpdate ?? (value) {},
     );
   }
 }
